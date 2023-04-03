@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noods</title>
+    <link rel="stylesheet" href="../day09/fontawesome-free-6.3.0-web/css/all.css">
+    <style>
+        @font-face {
+            font-family: "Roboto";
+            src: url(../font_folder/Roboto/Roboto-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: "RobotoBold";
+            src: url(../font_folder/Roboto/Roboto-Bold.ttf);
+        }
+
+        body {
+            margin: 0;
+            font-family: "Roboto";
+        }
+
+        #header {
+            background-color: white;
+            width: 100%;
+            height: 20%;
+        }
+
+        #SanyoLogo {
+            width: 300px;
+            height: 30px;
+            padding: 20px;
+            margin-left: 13.5%;
+            display: flex;
+        }
+
+        #navRed {
+            position: sticky;
+            top: 0;
+            background-color: #f02121;
+            width: 100%;
+        }
+
+        #navText {
+            color: white;
+            padding: 15px;
+            width: 80%;
+            height: 20%;
+            font-size: .7em;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        #navText span {
+            margin: 0 15px;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        #navText>span:hover {
+            border-bottom: 2px solid;
+        }
+
+        .ABOUTUS:hover>.box2,
+        .QUALITY:hover>.box3,
+        .BRAND:hover>.box4 {
+            display: block;
+        }
+
+        .box2 span:hover::before,
+        .box3 span:hover::before,
+        .box4 span:hover::before {
+            content: "─ ";
+        }
+
+
+        #navText #triangle::after {
+            content: "  ▾";
+        }
+
+        .box2,
+        .box3,
+        .box4 {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid lightgrey;
+            color: black;
+            padding: 5px 0 5px 0;
+            font-size: .5em;
+            line-height: 20px;
+        }
+
+        .box2 {
+            width: 75px;
+            height: 60px;
+        }
+
+        .box3 {
+            width: 125px;
+            height: 100px;
+        }
+
+        .box4 {
+            width: 170px;
+            height: 60px;
+        }
+
+        /* #parentContainer {
+            overflow: auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        #ImageClass {
+            scroll-snap-align: start;
+        } */
+
+        #main1 {
+            width: 100%;
+            height: 325px;
+            display: flex;
+            margin-bottom: 25px;
+            overflow: auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        .pic1 {
+            scroll-snap-align: start;
+            width: 100%;
+            height: 325px;
+            flex-shrink: 0;
+        }
+
+        .pic2 {
+            scroll-snap-align: start;
+            width: 100%;
+            height: 325px;
+            flex-shrink: 0;
+        }
+
+        /* #main1 {
+            width: 100%;
+            height: 325px;
+            background-image: url(../day15/Sriracha.png);
+            background-size: cover;
+            margin-bottom: 25px;
+        }
+
+        #main1:hover {
+            background-image: url(../day15/bowlAnnouncement8.1_2000x.jpg);
+        } */
+
+        #main2 {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            margin-bottom: 25px;
+        }
+
+        #main2 img {
+            width: 285px;
+            height: 154px;
+            margin: 8px;
+        }
+
+        #OurProducts {
+            color: black;
+            font-size: 1.25em;
+            font-family: "RobotoBold";
+            width: 90%;
+            height: fit-content;
+            text-align: center;
+            font-size: 1.5em;
+            margin: 0 auto;
+            white-space: nowrap;
+        }
+
+        #OurProducts::after,
+        #OurProducts::before {
+            content: "──────────────────── ";
+            color: lightgrey;
+        }
+
+        .minus {
+            width: 100px;
+        }
+
+        #noods {
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+        }
+
+        #noods img {
+            width: 80px;
+            height: 80px;
+        }
+
+        #noodsText {
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+            flex-wrap: wrap;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        #redIcons {
+            border-top: 1px solid lightgrey;
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+            padding: 20px;
+            margin: 50px auto;
+        }
+
+        #footer {
+            background-color: #141414;
+            /* border-top: 3px solid transparent;
+            border-bottom: 4px solid transparent; */
+            color: grey;
+            font-size: 0.8em;
+            display: flex;
+            align-content: flex-start;
+            padding: 15px 0 35px 0;
+        }
+
+        #footer table {
+            width: 100%;
+            height: 100px;
+            border: 2px solid transparent;
+            display: flex;
+            justify-content: left;
+            flex-flow: row space-around;
+        }
+
+        #infoTable,
+        #customerTable {
+            display: inline-block;
+            margin: 30px 0 60px 90px;
+            line-height: 20px;
+        }
+
+        #infoTable span:not(:first-child),
+        #customerTable span:not(:first-child) {
+            font-size: 0.9em;
+        }
+
+        #infoTable span:not(:first-child):hover,
+        #customerTable span:not(:first-child):hover {
+            color: white;
+            font-size: .95em;
+            border-bottom: 2px solid;
+        }
+
+        .address {
+            width: 100%;
+            height: 100px;
+            padding: 25px 0 50px 0;
+            border-top: .5px solid lightgrey;
+            background-color: #141414;
+            color: grey;
+            font-size: 0.7em;
+        }
+
+        .address span {
+            width: 100%;
+            margin: 0 0 100px 90px;
+            line-height: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div id="SanyoLogo"><img src="../day15/SanyoRedLogo.avif" alt="SanyoRed"></div>
+    </div>
+    <div id="navRed">
+        <div id="navText">
+            <span>PRODUCTS</span>
+            <span id="triangle" class="ABOUTUS">ABOUT US
+                <div class="box2">
+                    <span>Voice</span>
+                    <span>History</span>
+                    <span>Network</span>
+                </div>
+            </span>
+            <span id="triangle" class="QUALITY">QUALITY & SAFETY
+                <div class="box3">
+                    <span>Quality and Safety</span><br>
+                    <span>Ingredients</span><br>
+                    <span>Production</span><br>
+                    <span>Factory Tour</span><br>
+                    <span>FAQ</span>
+                </div>
+            </span>
+            <span id="triangle" class="BRAND">BRAND STORY
+                <div class="box4">
+                    <span>Our Story</span><br>
+                    <span>The Story of 3 flavors</span><br>
+                    <span>Our Research and Development</span>
+                </div>
+            </span>
+            <span>RECIPES</span>
+            <span>CONTACT US</span>
+            <span>BUY ONLINE</span>
+        </div>
+    </div>
+    </div>
+    <div id="main1">
+        <img src="../day15/Sriracha.png" class="pic1" alt="noods1">
+        <img src="../day15/bowlAnnouncement8.1_2000x.jpg" class="pic2" alt="noods2">
+    </div>
+    <div id="main2">
+        <img src="../day15/OurProducts.jpg" alt="OurProducts">
+        <img src="../day15/recipes.webp" alt="Recipes">
+        <img src="../day15/BrandStory.jpg" alt="BrandStory">
+    </div>
+    <div id="OurProducts">
+        <span class="prodText">OUR PRODUCTS</span>
+    </div>
+    <br>
+    <br>
+    <div id="noods">
+        <img src="../day15/RedOriginalNoods.png" alt="OriginalNoods">
+        <img src="../day15/GreenChickenNoods.png" alt="ChickenNoods">
+        <img src="../day15/BrownBeefNoods.png" alt="BeefNoods">
+        <img src="../day15/Pink.webp" alt="ShrimpNoods">
+        <img src="../day15/Miso.webp" alt="RamenNoods">
+        <img src="../day15/Shio.webp" alt="ShioNoods">
+    </div>
+    <div id="noodsText">
+        <span>Sapporo Ichiban <br> Original</span>
+        <span>Sapporo Ichiban <br> Chicken</span>
+        <span>Sapporo Ichiban <br> Beef</span>
+        <span>Sapporo Ichiban <br> Shrimp</span>
+        <span>Sapporo Ichiban <br> Miso Ramen</span>
+        <span>Sapporo Ichiban <br> Shio Ramen</span>
+    </div>
+    <div id="redIcons">
+        <img src="../day15/AboutUsRed.avif" alt="Noods">
+        <img src="../day15/QualityRed.avif" alt="Check">
+        <img src="../day15/FactoryTour.png" alt="Factory">
+        <img src="../day15/FAQRed.avif" alt="FAQ">
+        <img src="../day15/ContactUsRed.avif" alt="Contact">
+    </div>
+    <div id="footer">
+        <div id="infoTable">
+            <span style="color: white; font-style: bold; font-size: 1em;">INFORMATION</span><br><br>
+            <span>Voice</span><br>
+            <span>History</span><br>
+            <span>Network</span><br>
+            <span>FAQ</span>
+        </div>
+        <div id="customerTable">
+            <span style="color: white; font-style: bold; font-size: 1em;">CUSTOMER SERVICE</span><br><br>
+            <span>Phone: (714) 891-3671</span><br>
+            <span>Terms & Conditions</span><br>
+            <span>Privacy Policy</span><br>
+            <span>Terms of Sale</span><br>
+            <span>Do Not Sell My Personal</span><br>
+            <span>Information</span>
+        </div>
+    </div>
+    <div class="address"><span><i class="fa-regular fa-copyright" style="color: #808080;"></i>&nbsp;Sanyo Food Corp of
+            America</span><br>
+        <span>Monarch St, Garden Grove, CA 92841</span>
+    </div>
+</body>
+
+</html>
